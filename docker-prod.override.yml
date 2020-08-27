@@ -1,0 +1,28 @@
+version: '2.3'
+services:
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - type: bind
+        source: /etc/letsencrypt/live/rezepte.rafrey.com/fullchain.pem
+        target: /docker-volumes/etc/letsencrypt/live/rezepte.rafrey.com/fullchain.pem
+      - type: bind
+        source: /etc/letsencrypt/live/rezepte.rafrey.com/privkey.pem
+        target: /docker-volumes/etc/letsencrypt/live/rezepte.rafrey.com/privkey.pem
+      - type: bind
+        source: /etc/letsencrypt/ssl-dhparams.pem
+        target: /docker-volumes/etc/letsencrypt/ssl-dhparams.pem
+      - type: bind
+        source: /etc/letsencrypt/options-ssl-nginx.conf
+        target: /docker-volumes/etc/letsencrypt/options-ssl-nginx.conf
+      # for certbot challenges
+      - /docker-volumes/data/letsencrypt:/data/letsencrypt
+  api:
+    restart: always
+  web:
+    restart: on-failure
+  db:
+    restart: always
