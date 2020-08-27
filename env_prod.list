@@ -5,7 +5,7 @@ MYSQL_ROOT_PASSWORD=root
 # Django config
 API_URL=0.0.0.0:443
 API_PORT=443
-DJANGO_SECRET_KEY=UVJKuivYbAE2dCTOJGKh
+DJANGO_SECRET_KEY=supersecretpw
 DJANGO_SETTINGS_MODULE=base.settings
 DJANGO_DEBUG=False
 ALLOWED_HOST=localhost, rezepte.rafrey.com
